@@ -19,9 +19,9 @@ window.addEventListener('DOMContentLoaded', async function(event) {
   // ⬇️ ⬇️ ⬇️
 
 let response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=2a61afe8c8867846167075eecc9305a6&language=en-US`)
-console.log(response)
+//console.log(response)
 let json = await response.json()
-console.log(json)
+//console.log(json)
 
 let movies = json.results
 console.log(movies)
@@ -46,8 +46,10 @@ console.log(movies)
   for (i = 0; i < movies.length; i++) {
     let currentmovie = movies[i]
     let posterpath = currentmovie.poster_path
-    console.log(currentmovie)
-    console.log(posterpath)
+    let movieid = currentmovie.id
+    //console.log(currentmovie)
+    //console.log(posterpath)
+    //console.log(movieid)
     let outputElement = document.querySelector('.movies')
     let html = `<div class="w-1/5 p-4 movie-abcdefg1234567">
     <img src="https://image.tmdb.org/t/p/w500${posterpath}" class="w-full">
@@ -57,7 +59,6 @@ console.log(movies)
 
   }
  
-
   // ⬆️ ⬆️ ⬆️ 
   // End Step 2
 
@@ -72,6 +73,10 @@ console.log(movies)
   //   the movie is watched. Use .classList.remove('opacity-20')
   //   to remove the class if the element already contains it.
   // ⬇️ ⬇️ ⬇️
+
+
+
+
 
   // ⬆️ ⬆️ ⬆️ 
   // End Step 3
