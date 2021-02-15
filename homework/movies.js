@@ -82,7 +82,14 @@ console.log(movies)
     event.preventDefault()
     document.querySelector(`.post`).classList.add('opacity-20')
     // need it to work for all movies, not just wonder woman
+
     
+    //THEN NEED To add to firebase
+  //let docRef = await db.collection('watched').add(movieid)
+  //let movieid = docRef.id
+  
+  
+
   })
 
 
