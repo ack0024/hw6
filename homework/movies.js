@@ -18,6 +18,15 @@ window.addEventListener('DOMContentLoaded', async function(event) {
   // console to ensure you've got good data
   // ⬇️ ⬇️ ⬇️
 
+let response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=2a61afe8c8867846167075eecc9305a6&language=en-US`)
+console.log(response)
+let json = await response.json()
+console.log(json)
+
+let movies = json.results
+console.log(movies)
+
+
   // ⬆️ ⬆️ ⬆️ 
   // End Step 1
   
@@ -33,6 +42,21 @@ window.addEventListener('DOMContentLoaded', async function(event) {
   //   <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
   // </div>
   // ⬇️ ⬇️ ⬇️
+
+  for (i = 0; i < movies.length; i++) {
+    let currentmovie = movies[i]
+    let posterpath = currentmovie.poster_path
+    console.log(currentmovie)
+    console.log(posterpath)
+    let outputElement = document.querySelector('.movies')
+    let html = `<div class="w-1/5 p-4 movie-abcdefg1234567">
+    <img src="https://image.tmdb.org/t/p/w500${posterpath}" class="w-full">
+    <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
+  </div>`
+    outputElement.insertAdjacentHTML('beforeend', html)
+
+  }
+ 
 
   // ⬆️ ⬆️ ⬆️ 
   // End Step 2
