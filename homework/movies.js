@@ -74,7 +74,11 @@ console.log(movies)
   //   to remove the class if the element already contains it.
   // ⬇️ ⬇️ ⬇️
 
-  let button = document.querySelector('watched-button')
+  let button = document.querySelector('.watched-button')
+  button.addEventListener('click', async function(event) {
+    event.preventDefault()
+    document.querySelector(`.watched-button`).classList.add('opacity-20')
+  })
 
 
 
