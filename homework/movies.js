@@ -12,6 +12,9 @@
 // complete image URL
 
 window.addEventListener('DOMContentLoaded', async function(event) {
+
+  let db = firebase.firestore()
+
   // Step 1: Construct a URL to get movies playing now from TMDB, fetch
   // data and put the Array of movie Objects in a variable called
   // movies. Write the contents of this array to the JavaScript
@@ -78,9 +81,9 @@ console.log(movies)
   button.addEventListener('click', async function(event) {
     event.preventDefault()
     document.querySelector(`.post`).classList.add('opacity-20')
+    // need it to work for all movies, not just wonder woman
+    
   })
-
-
 
 
 
