@@ -55,15 +55,24 @@ console.log(movies)
     let currentmovie = movies[i]
     let posterpath = currentmovie.poster_path
     let movieid = currentmovie.id
+    let dbmovie = await db.collection('watched').doc(`${movieid}`).get()
+    let dbmv = dbmovie.data()
+    console.log(dbmv)
     //console.log(currentmovie)
     //console.log(posterpath)
     //console.log(movieid)
+
     let outputElement = document.querySelector('.movies')
     let html = `<div class="w-1/5 p-4 movie-${movieid}">
     <img src="https://image.tmdb.org/t/p/w500${posterpath}" class="w-full">
     <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
   </div>`
     outputElement.insertAdjacentHTML('beforeend', html)
+
+    if (dbmv) {
+      let buttonresult = document.querySelector(`.movie-${movieid}`)
+      buttonresult.classList.add('opacity-20')
+    }
 
     //STEP 3
     let button = document.querySelector(`.movie-${movieid}`)
