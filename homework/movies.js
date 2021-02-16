@@ -14,6 +14,11 @@
 window.addEventListener('DOMContentLoaded', async function(event) {
 
   let db = firebase.firestore()
+  let watchedSnapshot = await db.collection('watched').get()
+  //console.log(watchedSnapshot)
+
+  let clickedmovies = watchedSnapshot.docs
+  //console.log(clickedmovies.data())
 
   // Step 1: Construct a URL to get movies playing now from TMDB, fetch
   // data and put the Array of movie Objects in a variable called
@@ -54,11 +59,27 @@ console.log(movies)
     //console.log(posterpath)
     //console.log(movieid)
     let outputElement = document.querySelector('.movies')
-    let html = `<div class="post w-1/5 p-4 movie-${movieid}">
+    let html = `<div class="w-1/5 p-4 movie-${movieid}">
     <img src="https://image.tmdb.org/t/p/w500${posterpath}" class="w-full">
     <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
   </div>`
     outputElement.insertAdjacentHTML('beforeend', html)
+
+    //STEP 3
+    let button = document.querySelector(`.movie-${movieid}`)
+    //console.log(button)
+    button.addEventListener('click', async function(event){
+      event.preventDefault()
+
+      let buttonresult = document.querySelector(`.movie-${movieid}`)
+      console.log(buttonresult)
+      buttonresult.classList.add('opacity-20')
+  
+    await db.collection('watched').doc(`${movieid}`).set({})
+
+    })
+
+
 
   }
  
@@ -77,20 +98,16 @@ console.log(movies)
   //   to remove the class if the element already contains it.
   // ⬇️ ⬇️ ⬇️
 
-  let button = document.querySelector('.post')
-  button.addEventListener('click', async function(event) {
-    event.preventDefault()
-    document.querySelector(`.post`).classList.add('opacity-20')
-    // need it to work for all movies, not just wonder woman
+  //ADDED STEP 3 CODE WITHIN FOR LOOP IN STEP 2
 
-    
-    //THEN NEED To add to firebase
-  //let docRef = await db.collection('watched').add(movieid)
-  //let movieid = docRef.id
+
+
+
+   
   
   
 
-  })
+
 
 
 
