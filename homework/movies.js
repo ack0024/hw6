@@ -119,7 +119,6 @@ console.log(movies)
 
 
 
-
   // ⬆️ ⬆️ ⬆️ 
   // End Step 3
 
