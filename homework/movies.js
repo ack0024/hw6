@@ -55,9 +55,9 @@ console.log(movies)
     let currentmovie = movies[i]
     let posterpath = currentmovie.poster_path
     let movieid = currentmovie.id
-    let dbmovie = await db.collection('watched').doc(`${movieid}`).get()
-    let dbmv = dbmovie.data()
-    console.log(dbmv)
+    let fsmovie = await db.collection('watched').doc(`${movieid}`).get()
+    let fsmoviedb = fsmovie.data()
+    console.log(fsmoviedb)
     //console.log(currentmovie)
     //console.log(posterpath)
     //console.log(movieid)
@@ -69,7 +69,7 @@ console.log(movies)
   </div>`
     outputElement.insertAdjacentHTML('beforeend', html)
 
-    if (dbmv) {
+    if (fsmoviedb) {
       let buttonresult = document.querySelector(`.movie-${movieid}`)
       buttonresult.classList.add('opacity-20')
     }
@@ -108,7 +108,7 @@ console.log(movies)
   // ⬇️ ⬇️ ⬇️
 
   //ADDED STEP 3 CODE WITHIN FOR LOOP IN STEP 2
-
+ // ADDED STEP 4 CODE ABOVE as well 
 
 
 
